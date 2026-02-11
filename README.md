@@ -24,13 +24,21 @@ npm run build
 
 Build output is written to `build/index.js`.
 
-## Run (STDIO MCP Server)
+## Run (HTTP MCP Server)
 
 ```bash
 npm start
 ```
 
-The server communicates over STDIO, so it is intended to be launched by an MCP host.
+The server listens on `PORT` (defaults to `3000`) and exposes:
+
+- MCP endpoint: `/mcp`
+- Health endpoint: `/health`
+
+Local test URLs:
+
+- `http://localhost:3000/mcp`
+- `http://localhost:3000/health`
 
 ## Tool Inputs
 
@@ -40,13 +48,27 @@ The server communicates over STDIO, so it is intended to be launched by an MCP h
   - `latitude` (number): decimal latitude
   - `longitude` (number): decimal longitude
 
-## MCP Host Hookup Example
+## Deploy on Railway
 
-For hosts that accept a command-based MCP server configuration, point to the built entry:
+1. Push this repo to GitHub.
+2. Create a Railway project and link the repo.
+3. Use:
+   - Build command: `npm install && npm run build`
+   - Start command: `npm start`
+4. Railway provides a public URL, for example:
+   - `https://your-app.up.railway.app`
 
-- Command: `node`
-- Args: `["D:/mcpserverdemo/build/index.js"]`
-- Working directory: `D:/mcpserverdemo`
+MCP endpoint becomes:
 
-If your host supports npm scripts, you can alternatively run `npm start` in this project directory.
+- `https://your-app.up.railway.app/mcp`
+
+## Claude Custom Connector Setup
+
+- Name: any label you prefer (for example `Weather MCP`)
+- Remote MCP server URL: `https://your-app.up.railway.app/mcp`
+
+After saving the connector, test tools:
+
+- `get_alerts` with a state like `CA`
+- `get_forecast` with coordinates like `37.7749, -122.4194`
 
