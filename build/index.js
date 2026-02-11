@@ -138,7 +138,7 @@ function createWeatherServer() {
 }
 async function main() {
     const sessions = new Map();
-    const port = Number(process.env.PORT ?? "3000");
+    const port = Number(process.env.PORT ?? "8080");
     const isInitializeRequest = (body) => typeof body === "object" &&
         body !== null &&
         "method" in body &&

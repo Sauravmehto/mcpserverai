@@ -199,7 +199,7 @@ function createWeatherServer(): McpServer {
 
 async function main(): Promise<void> {
   const sessions = new Map<string, { transport: StreamableHTTPServerTransport; mcpServer: McpServer }>();
-  const port = Number(process.env.PORT ?? "3000");
+  const port = Number(process.env.PORT ?? "8080");
 
   const isInitializeRequest = (body: unknown): boolean =>
     typeof body === "object" &&
