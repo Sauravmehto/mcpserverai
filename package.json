@@ -1,0 +1,31 @@
+{
+  "name": "basic-mcp-weather-server",
+  "version": "1.0.0",
+  "description": "A minimal TypeScript MCP weather server using the NWS API.",
+  "type": "module",
+  "bin": {
+    "weather": "build/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "weather",
+    "typescript"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}
+
